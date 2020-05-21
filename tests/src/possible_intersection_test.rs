@@ -7,7 +7,7 @@ use geo_booleanop::boolean::subdivide_segments::subdivide;
 use geo_booleanop::boolean::sweep_event::SweepEvent;
 use geo_booleanop::boolean::Operation;
 use geo_booleanop::boolean::BoundingBox;
-use geo_booleanop::splay::SplaySet;
+use array_stump::ArrayStump;
 use num_traits::Float;
 use std::cmp::Ordering;
 use std::collections::BinaryHeap;
@@ -100,13 +100,13 @@ fn test_on_two_polygons() {
     let te4 = SweepEvent::new_rc(0, p2, true, Rc::downgrade(&te3), false, true);
     te3.set_other_event(&te4);
 
-    let mut tr = SplaySet::new(compare_segments);
+    let mut tr = ArrayStump::new(compare_segments);
 
     tr.insert(te.clone());
     tr.insert(te3.clone());
 
-    assert!(Rc::ptr_eq(&te, tr.find(&te).unwrap()));
-    assert!(Rc::ptr_eq(&te3, tr.find(&te3).unwrap()));
+    assert!(Rc::ptr_eq(&te, tr.get_by_index(tr.find(&te).unwrap())));
+    assert!(Rc::ptr_eq(&te3, tr.get_by_index(tr.find(&te3).unwrap())));
 
     assert_eq!(compare_segments(&te, &te3), Ordering::Greater);
     assert_eq!(compare_segments(&te3, &te), Ordering::Less);

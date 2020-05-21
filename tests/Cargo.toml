@@ -18,6 +18,7 @@ num-traits = "0.2"
 glob = "0.3"
 pretty_assertions = "0.6"
 rand = "0.7.3"
+array_stump = { path = "/home/fabian/git/rust-array-stump/lib" }
 
 [dev-dependencies]
 criterion = "0.3"

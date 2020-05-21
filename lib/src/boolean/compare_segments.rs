@@ -111,7 +111,7 @@ where
 mod test {
     use super::super::sweep_event::SweepEvent;
     use super::compare_segments;
-    use crate::splay::SplaySet;
+    use array_stump::ArrayStump;
     use geo_types::Coordinate;
     use std::cmp::Ordering;
     use std::rc::{Rc, Weak};
@@ -173,7 +173,7 @@ mod test {
         let (se1, _other1) = make_simple(0, 0.0, 0.0, 1.0, 1.0, false);
         let (se2, _other2) = make_simple(0, 0.0, 0.0, 2.0, 3.0, false);
 
-        let mut tree = SplaySet::new(compare_segments);
+        let mut tree = ArrayStump::new(compare_segments);
 
         tree.insert(se1);
         tree.insert(se2);
@@ -190,7 +190,7 @@ mod test {
         let (se1, _other1) = make_simple(0, 0.0, 1.0, 1.0, 1.0, false);
         let (se2, _other2) = make_simple(0, 0.0, 2.0, 2.0, 3.0, false);
 
-        let mut tree = SplaySet::new(compare_segments);
+        let mut tree = ArrayStump::new(compare_segments);
 
         tree.insert(se1);
         tree.insert(se2);
