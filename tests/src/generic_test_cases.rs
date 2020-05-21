@@ -1,6 +1,7 @@
 use glob::glob;
 use std::panic::catch_unwind;
 use std::thread::Result;
+use pretty_assertions::assert_eq;
 
 use geo::MultiPolygon;
 
