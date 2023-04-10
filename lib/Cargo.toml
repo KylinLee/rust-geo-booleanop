@@ -1,6 +1,6 @@
 [package]
 name = "geo-booleanop"
-version = "0.3.2"
+version = "0.3.3"
 authors = ["Bodo Junglas <junglas@objectcode.de>"]
 edition = "2018"
 license = "MIT"
@@ -14,7 +14,7 @@ geo-types = { version = "0.6.0", default-features = false }
 num-traits = "0.2"
 robust = "0.1"
 float_next_after = "0.1"
-array_stump = { path = "/home/fabian/git/rust-array-stump/lib" }
+array_stump = { git = "https://github.com/bluenote10/rust-array-stump", rev = "04a6f63eb19587e313203fc211f6aef1eae9f956"}
 
 [dev-dependencies]
 rand = "0.3"
